@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Issue Tracker by ProstoN</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+    <style>
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
+        }
+
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 600px;
+            }
+        }
+
+        .top-nav-collapse {
+            background-color: #3f51b5 !important;
+        }
+
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 991px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5 !important;
+            }
+        }
+
+        .md-form label {
+            color: #ffffff;
+        }
+
+        .card {
+            background-color: rgba(126, 123, 215, 0.2);
+        }
+
+        h6 {
+            line-height: 1.7;
+        }
+
+        .rgba-gradient {
+            background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/welcome">
+                <strong>Issue Tracker</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                    aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/welcome">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/issues">Issues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Create</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/logout">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="view"
+         style="background-size: cover; background: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg') no-repeat center center;">
+        <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+                        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Join
+                            now! </h1>
+                        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                        <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Let me introduce a ISSUE TRACKER capable
+                            of tracking tasks that have been or will be created, as well as editing and completing
+                            them.</h6>
+                        <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">If you are already registered in our system, then just enter your username and password!</h6>
+                    </div>
+                    <div class="col-md-6 col-xl-5 mb-4">
+                        <form action="/login" method="POST" role="form">
+                            <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h3 class="white-text">
+                                            <i class="fas fa-user white-text"></i> Register:</h3>
+                                        <hr class="hr-light">
+                                    </div>
+
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-user prefix white-text active"></i>
+                                        <input type="text" id="user" name="user" class="white-text form-control" required>
+                                        <label for="user" class="active" >Your username</label>
+                                    </div>
+                                    <div class="md-form form-group">
+                                        <i class="fas fa-lock prefix white-text active"></i>
+                                        <input type="password" id="password" name="password"
+                                               class="white-text form-control" required>
+                                        <label for="password">Your password</label>
+                                    </div>
+                                    <div class="text-center mt-4 md-form form-group">
+                                        <button type="submit" class="btn btn-indigo">Sign up</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script>
+    new WOW().init();
+</script>
+
+</body>
+
+</html>

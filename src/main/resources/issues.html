@@ -1,0 +1,182 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>View Issue</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+    <style>
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
+        }
+
+        .custom-scroll {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 600px;
+            }
+        }
+
+        .top-nav-collapse {
+            background-color: #3f51b5 !important;
+        }
+
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 991px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5 !important;
+            }
+        }
+
+        .md-form label {
+            color: #ffffff;
+        }
+
+        .top-buffer {
+            margin-top: 10%;
+        }
+
+        .card-body {
+            background-color: rgba(126, 123, 215, 0.2);
+        }
+
+        h6 {
+            line-height: 1.7;
+        }
+
+        .rgba-gradient {
+            background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/welcome">
+                <strong>Issue Tracker</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                    aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/welcome">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/issues">View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Create</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="view"
+         style="background-size: cover;
+         background: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg') no-repeat center center;">
+        <div class="mask rgba-gradient d-flex ">
+            <div class="container custom-scroll">
+                <div class="row top-buffer">
+                    <div class="card-body wow fadeInDown white-text" data-wow-delay="0.3s">
+                        <h2>Issue List:</h2>
+                        <table class="table table-condensed white-text">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th >Status</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script>
+    var obj, dbParam, xmlhttp, myObj, x, txt = "";
+    obj = {
+        table: "test",
+        limit: 500
+    };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            for (x in myObj) {
+
+                txt += "<tr>";
+                txt += "<td><a class='nav-link white-text' href='/edit?id="
+                    + myObj[x].id + "'>" + myObj[x].name + "</a></td>";
+                txt += "<td>" + myObj[x].status + "</td>";
+                txt += "<td>" + myObj[x].date + "</td>";
+
+                txt += "</tr>";
+            }
+            document.getElementById("table").innerHTML = txt;
+        }
+    };
+
+    xmlhttp.open("GET", "getIssues", true);
+    xmlhttp.setRequestHeader("Content-type",
+        "application/x-www-form-urlencoded");
+    xmlhttp
+        .setRequestHeader(
+            "Accept",
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+    xmlhttp.send("x=" + dbParam);
+    document.getElementById("demo").innerHTML = xmlhttp
+        .getAllResponseHeaders();
+</script>
+<script>
+    new WOW().init();
+</script>
+</body>
+
+</html>

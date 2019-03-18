@@ -1,0 +1,251 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>View Issue</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/css/mdb.min.css" rel="stylesheet">
+    <style>
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
+        }
+
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 600px;
+            }
+        }
+
+        .top-nav-collapse {
+            background-color: #3f51b5 !important;
+        }
+
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 991px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5 !important;
+            }
+        }
+
+        .md-form label {
+            color: #ffffff;
+        }
+
+        .top-buffer {
+            margin-top: 10%;
+        }
+
+        .custom-scroll {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .card-body {
+            background-color: rgba(126, 123, 215, 0.2);
+            overflow: auto;
+        }
+
+        h6 {
+            line-height: 1.7;
+        }
+
+        .rgba-gradient {
+            background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+            background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/welcome">
+                <strong>Issue Tracker</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                    aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/welcome">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/issues">View</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/create">Create</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="view "
+         style="background-size: cover;
+             background: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg') no-repeat center center;">
+        <div class="mask rgba-gradient d-flex ">
+            <div class="container custom-scroll">
+                <div class="row top-buffer ">
+                    <div class="card-body wow fadeInDown white-text " data-wow-delay="0.3s">
+                        <div class="container " id="maindata">
+                            <div class="col-xs-12" style="height: 50px;"></div>
+                            <h2 id="name">name</h2>
+                            <div class="col-xs-12" style="height: 50px;"></div>
+                            <h6>
+                                Status
+                                <small id="status"></small>
+                            </h6>
+                            <h6>
+                                Date
+                                <small id="date"></small>
+                            </h6>
+                            <h6>
+                                Author
+                                <small id="author"></small>
+                            </h6>
+                            <h6>
+                                Comments
+                            </h6>
+                            <p id="comments"></p>
+                        </div>
+                        <div class="container">
+                            <div class="col-xs-12" style="height: 50px;"></div>
+                            <h3>Add comment</h3>
+                            <form action="/addComment" method="POST">
+                                <div class="my-1">
+                                    <div class="form-group">
+                                        <label for="author">Author</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="authorComment"
+                                               name="authorComment"
+                                               required> <label
+                                            for="status">Status</label>
+                                        <select class="form-control" id="statusComment" name="statusComment">
+                                            <option>Created</option>
+                                            <option>Resolved</option>
+                                            <option>Closed</option>
+                                        </select> <label for="comment">Comment</label>
+                                        <textarea class="form-control" id="comment"
+                                                  placeholder="Enter comment" name="comment" cols="" rows=""
+                                                  required></textarea>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script>
+    var obj, dbParam, xmlhttp, myObj = "";
+    obj = {
+        table: "test",
+        limit: 500
+    };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+
+            document.getElementById("name").innerHTML = myObj.name;
+            document.getElementById("author").innerHTML = myObj.author;
+            document.getElementById("status").innerHTML = myObj.status;
+            document.getElementById("date").innerHTML = myObj.date;
+        }
+    };
+
+    xmlhttp.open("GET", "getIssue", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+    xmlhttp.send(null);
+</script>
+<script>
+    var obj, dbParam, xmlhttp, myObj, x, txt = "";
+    obj = {
+        table: "test",
+        limit: 500
+    };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            for (x in myObj) {
+                txt += "<p>";
+                txt += myObj[x].text + " at ";
+                txt += myObj[x].date + " by " + myObj[x].author;
+            }
+            document.getElementById("comments").innerHTML = txt;
+        }
+    };
+
+    xmlhttp.open("GET", "getComments", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+    xmlhttp.send(null);
+</script>
+<script>
+    new WOW().init();
+</script>
+</body>
+
+</html>
